@@ -16,6 +16,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <h1>Vite + TypeScript</h1>
      <h2>${users[1].nombre}</h2>
       <h2>${userClass.nombre} : ${userClass.edad}</h2>
+      <h2>${userClass.imageUrl}</h2>
+      <h2>${userClass.saludar()}</h2>
       
     <div class="card">
       <button id="counter" type="button"></button>

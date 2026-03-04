@@ -18,17 +18,45 @@
 // export const userClass = new Usuario("Emiliano", 18);
 // userClass.saludar();
 
-export class Usuarios {
+// // $this hace referencia a la instancia de la clase, es decir, al objeto que se está creando. En el constructor,
+// // se asignan los valores de los parámetros a las propiedades de la clase utilizando this.nombre, this.edad y this.telefono.
+
+// export class Usuarios {
+//   constructor(public nombre: string, public edad: number) { }
+
+//   saludar(): string {
+//     return `Hola, soy ${this.nombre} `;
+//   }
+// }
+// //Crear un objeto tipo Usuario
+// export const userClass = new Usuarios("Diego", 30);
+import axios from 'axios';
+export class Usuario {
   //METODOS
   constructor(
-    public readonly nombre: string,
-    public readonly edad: number,
-    public readonly telefono?: string
-  ) {}
+    public id: number,
+    public nombre: string,
+    public edad: number
+  ) { }
+
+  get imageUrl(): string {
+    return `https://imagenUser.com${this.id}`;
+  }
+
   saludar(): string {
-    return `Hola, soy ${this.nombre} y tengo ${this.edad} años. y mi numero de telefono es ${this.telefono}`;
+    return (`Hola, soy ${this.nombre} conn el id ${this.id}`);
+  }
+
+  async getMoves() {
+    // const moves  = 10;
+    const resp = await axios.get('https://rickandmortyapi.com/api/character/77');
+    console.log(resp);
+    //return resp;
   }
 }
-
 //Crear un objeto tipo Usuario
-export const userClass = new Usuarios("Diego", 30, 314 6798463);
+export const userClass = new Usuario(1, "Diego", 34);
+// console.log();
+userClass.getMoves()
+
+
