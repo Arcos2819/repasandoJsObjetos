@@ -31,6 +31,18 @@
 // //Crear un objeto tipo Usuario
 // export const userClass = new Usuarios("Diego", 30);
 import axios from 'axios';
+
+// La sintaxis Promise<CharacterData> es parte del sistema de tipos genéricos en TypeScript. Cuando defines una función 
+// asíncrona, ésta devuelve una promesa (Promise), lo que significa que en algún momento en el futuro se resolverá (o 
+// rechazará) con un valor. Al usar Promise<CharacterData>, le estás diciendo a TypeScript que cuando la promesa se 
+// resuelva, el valor resultante será de tipo CharacterData.
+
+type CharacterData = {
+  image: string;
+  name: string;
+  status: string;
+  id: number;
+}
 export class Usuario {
   //METODOS
   constructor(
@@ -47,7 +59,7 @@ export class Usuario {
     return (`Hola, soy ${this.nombre} conn el id ${this.id}`);
   }
 
-  async getMoves() {
+  async getMoves(): Promise<CharacterData> {
     // const moves  = 10;
     // se destructura un objetoque se esta guardando
     // const {data} = await axios.get('https://rickandmortyapi.com/api/character/77');
